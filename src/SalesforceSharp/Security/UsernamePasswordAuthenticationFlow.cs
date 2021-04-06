@@ -39,11 +39,24 @@ namespace SalesforceSharp.Security
         /// <param name="clientSecret">The client secret.</param>
         /// <param name="username">The username.</param>
         /// <param name="password">The password.</param>
-        public UsernamePasswordAuthenticationFlow(string clientId, string clientSecret, string username, string password) : 
+        public UsernamePasswordAuthenticationFlow(string clientId, string clientSecret, string username, string password) :
             this(new RestClient(), clientId, clientSecret, username, password)
-        {            
+        {
         }
-        
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UsernamePasswordAuthenticationFlow"/> class.
+        /// </summary>
+        /// <param name="clientId">The client id.</param>
+        /// <param name="clientSecret">The client secret.</param>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="isSandbox">True to login to a Sandbox.</param>
+        public UsernamePasswordAuthenticationFlow(string clientId, string clientSecret, string username, string password, Boolean isSandbox) :
+            this(new RestClient(), clientId, clientSecret, username, password, (isSandbox)? "https://test.salesforce.com/services/oauth2/token" : "https://login.salesforce.com/services/oauth2/token")
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="UsernamePasswordAuthenticationFlow"/> class.
         /// </summary>
